@@ -1,17 +1,9 @@
-const arrayUsers = [{
-    nome: "Willian",
-    ativo: true
-},
-{
-    nome: "Marcia Baila",
-    ativo: false
-}];
-
 const userResolvers = {
     Query:{
-        users: ()=> arrayUsers,
-        primeiroUser: ()=> arrayUsers[0]
+        users: (root, args, { dataSources }) =>  dataSources.usersAPI.getUsers(),
     }
 }
-
+//args =  id, dados para inserir
+//datasources permissões
+//info representa a arqvore de query e explica para o resolver o que retornar
 module.exports = userResolvers;
